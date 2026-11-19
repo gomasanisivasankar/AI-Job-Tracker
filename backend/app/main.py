@@ -5,10 +5,10 @@ from datetime import datetime
 from app.db.session import get_db
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text 
-
+from app.api import auth
 
 app = FastAPI(title=settings.app_name)
-
+app.include_router(auth.router)
 
 @app.get("/")
 async def home():
